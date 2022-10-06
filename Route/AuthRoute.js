@@ -39,6 +39,11 @@ const User  =  require('../model/UserModel')
  * /api/register:
  *     post:
  *       description: 'To register a new user'
+ *       requestBody:
+ *        content:
+ *         application/json:
+ *           schema:
+ *             $ref:'#definitions/RegisterUser'
  *       tags: [User]
  *       operationId: Register
  *       consumes:

@@ -4,7 +4,7 @@ const UserSchema = new Schema(
   {
     username: {
       type: String,
-      loweraCase: true,
+      lowerCase: true,
       minlength: 4,
       maxlength: 20,
       unique: true,
@@ -26,5 +26,6 @@ const UserSchema = new Schema(
     timestamps: true,
   }
 );
+
 
 module.exports = model("User", UserSchema);

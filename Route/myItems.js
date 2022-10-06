@@ -8,7 +8,7 @@ router.post("/new/item",createItem);
 
 router.get("/items",getAllItems);
 
-router.update("/update/item");
+router.put("/update/item");
 
 router.delete("/:id");
 

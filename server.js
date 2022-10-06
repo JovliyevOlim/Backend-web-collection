@@ -22,17 +22,23 @@ const  options  = {
         },
         servers:[
             {
-                url:'https://localhost:5000'
+                url:'https://localhost:5000/'
             }
         ]
 
     },
     apis:["./Route/*.js"]
 };
-
-
 const  swaggerdoc = swaggerJsDoc(options)
 app.use("/api-doc",swaggerUI.serve, swaggerUI.setup(swaggerdoc))
+
+
+app.get('/',(req,res)=>{
+    res.send('welcome to mongo db')
+})
+
+
+
 
 
 
@@ -46,6 +52,8 @@ app.use(express.urlencoded({extended:false}))
 
 
 app.use('/api',require('./Route/AuthRoute'))
+app.use('/api',require('./Route/UserRoute'))
+app.use('api',require('./Route/myItems'))
 
 app.listen(process.env.PORT,()=>{
     console.log('Server running port:'+process.env.PORT)
