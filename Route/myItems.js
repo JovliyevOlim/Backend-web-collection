@@ -1,12 +1,12 @@
 const express = require("express");
 
-const { createItem } = require("../Controllers/Item");
+const { createItem ,getAllItems} = require("../Controllers/Item");
 
 const router = express.Router();
 
 router.post("/new/item",createItem);
 
-router.get("/items");
+router.get("/items",getAllItems);
 
 router.update("/update/item");
 
