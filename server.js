@@ -23,7 +23,8 @@ const  options  = {
                 url: 'https://localhost:5000/'
             }
         ]
-    }
+    },
+    apis: ["./Route/*.js"],
 }
 const  swaggerdoc = swaggerJsDoc(options)
 app.use("/api-doc",swaggerUI.serve, swaggerUI.setup(swaggerdoc))
