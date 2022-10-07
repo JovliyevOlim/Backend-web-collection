@@ -53,7 +53,8 @@ app.use(express.urlencoded({extended:false}))
 
 app.use('/api',require('./Route/AuthRoute'))
 app.use('/api',require('./Route/UserRoute'))
-app.use('api',require('./Route/myItems'))
+app.use('/api',require('./Route/myItems'))
+app.use('/api',require('./Route/CategoryRoute'))
 
 app.listen(process.env.PORT,()=>{
     console.log('Server running port:'+process.env.PORT)

@@ -12,8 +12,12 @@ const itemSchema = new Schema({
     default: "",
   },
   authorId:{
-    type:mongoose.Schema.Types.ObjectId,
+    type:Schema.Types.ObjectId,
     ref:"User",
+  },
+  categoryId:{
+      type:Schema.Types.ObjectId,
+    ref:'Category'
   }
 
 });
