@@ -39,12 +39,7 @@ const User  =  require('../model/UserModel')
  * /api/register:
  *     post:
  *       description: 'To register a new user'
- *       requestBody:
- *        content:
- *         application/json:
- *           schema:
- *             $ref:'#definitions/RegisterUser'
- *       tags: [User]
+ *       tags: [user]
  *       operationId: Register
  *       consumes:
  *         - 'application/json'
@@ -61,11 +56,15 @@ const User  =  require('../model/UserModel')
  *           schema:
  *             $ref: '#/definitions/SuccessResponse'
  *         400:
- *           description: Email is already exist
- *
- *
- *
- *
+ *           description: Bad Request
+ *         404:
+ *           schema:
+ *             type: string
+ *           description: User not found
+ *         500:
+ *           schema:
+ *             type: string
+ *           description: Server error
  * definitions:
  *   RegisterUser:
  *     type: object
@@ -73,9 +72,9 @@ const User  =  require('../model/UserModel')
  *     properties:
  *       email:
  *         type: string
- *       username:
- *         type: string
  *       password:
+ *         type: string
+ *       username:
  *         type: string
  *   SuccessResponse:
  *     type: object
@@ -84,8 +83,6 @@ const User  =  require('../model/UserModel')
  *         type: boolean
  *       message:
  *         type: string
- *
- *
  *
  */
 
