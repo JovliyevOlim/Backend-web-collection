@@ -98,9 +98,6 @@ const  {addUser,deleteUser, updatedUser,getUser} = require('../Controllers/UserC
 
 
 router.post('/user',addUser)
-
-
-
 router.delete('/user/:id',deleteUser)
 router.put("/user:id",updatedUser)
 

@@ -18,7 +18,6 @@ const UserSchema = new Schema(
     password: {
       type: String,
       minlength: 5,
-      maxlength: 12,
       required: true,
     },
       commits:[{type:Schema.Types.ObjectId,ref:'Commit'}],
