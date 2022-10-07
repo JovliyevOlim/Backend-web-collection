@@ -21,6 +21,9 @@ const UserSchema = new Schema(
       maxlength: 12,
       required: true,
     },
+      commits:[{type:Schema.Types.ObjectId,ref:'Commit'}],
+      likes:[{type:Schema.Types.ObjectId,ref:'Item'}],
+      items:[{type:Schema.Types.ObjectId,ref:'Item'}]
   },
   {
     timestamps: true,
