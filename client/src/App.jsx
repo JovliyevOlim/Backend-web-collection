@@ -12,7 +12,7 @@ function App() {
     <div>
       <NavbarItem />
       <Routes>
-        <Route path="/" element={<Items />} />
+        <Route path="/" exact element={<Items />} />
         <Route path="/author" element={<Author />} />
         <Route path="/collection" element={<Collection />} />
         <Route path="/users" element={<Users />} />

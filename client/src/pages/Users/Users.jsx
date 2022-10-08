@@ -2,7 +2,10 @@ import React from 'react';
 
 function Users() {
   return (
-    <div>Users</div>
+    <div>
+      <h1>Page</h1>
+      Users
+    </div>
   );
 }
 
