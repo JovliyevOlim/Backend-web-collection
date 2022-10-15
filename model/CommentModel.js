@@ -1,10 +1,11 @@
-const {Schema,model}  =require('mongoose')
+const {Schema,model}  = require('mongoose')
 
 
 const CommitSchema = new Schema({
     title:{
         type:String,
-        required:''
+        required:true,
+        default:"",
     },
     authorId:{
         type:Schema.Types.ObjectId,
