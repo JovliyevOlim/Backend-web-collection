@@ -10,30 +10,11 @@ const swaggerUI = require("swagger-ui-express");
 dotenv.config();
 connectDB()
 
-const  options  = {
-    definition: {
-        openapi: '3.0.0',
-        info: {
-            title: 'Rest Api Docs',
-            version: "1.0.0",
-            description: 'Express APi'
-        },
-        servers: [
-            {
-                url: 'https://localhost:5000/'
-            }
-        ]
-    },
-    apis: ["./Route/*.js"],
-}
-const  swaggerdoc = swaggerJsDoc(options)
-app.use("/api-doc",swaggerUI.serve, swaggerUI.setup(swaggerdoc))
-
 
 
 
 //Middlewares
-app.use("/public", express.static("public"));
+app.use("/api/public", express.static("public"));
 app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
@@ -43,9 +24,12 @@ app.use("/api", require("./Route/AuthRoute"));
 app.use("/api/item", require("./Route/myItems"));
 app.use('/api',require('./Route/UserRoute'))
 app.use('/api',require('./Route/CategoryRoute'))
+app.use('/api',require('./Route/PhotoRoute'))
+app.use('/api', require('./Route/CollectionRoute'))
+app.use('/api',require('./Route/AuthorRoute'))
 
 app.listen(process.env.PORT,()=>{
     console.log('Server running port:'+process.env.PORT)
 
-    console.log(`Swagger info Api is running at http://localhost:${process.env.PORT}/api-doc`)
+    // console.log(`Swagger info Api is running at http://localhost:${process.env.PORT}/api-doc`)
 })

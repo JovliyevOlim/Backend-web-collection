@@ -17,6 +17,14 @@ const itemSchema = new Schema({
     type:Schema.Types.ObjectId,
     ref:"User",
   },
+  photo:{
+    type:String,
+    required: true
+  },
+  collectionId:{
+    type:Schema.Types.ObjectId,
+    ref:'Collection'
+  },
   categoryId:{
       type:Schema.Types.ObjectId,
     ref:'Category'

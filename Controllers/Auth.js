@@ -14,8 +14,16 @@ const register = async (req, res) => {
   }
 
   //checking if email is already in the database
+  const username =await  User.findOne({username: req.body.username})
+  if (username) return res.status(400).json({
+    success:false,
+    message:"Username already exist"
+  });
   const email = await User.findOne({ email: req.body.email });
-  if (email) return res.status(400).send("Email already exist");
+  if (email) return res.status(400).json({
+    success:false,
+    message:"Email already exist"
+  });
 
   //Hash passwords
   const salt = await bcrypt.genSalt(10);
@@ -25,7 +33,10 @@ const register = async (req, res) => {
 
   try {
     const savedUser = await user.save();
-    res.send({ user: user._id });
+    res.status(201).json({
+      success:true,
+      savedUser
+    })
   } catch (error) {
     res.status(400).send(error);
   }
@@ -46,6 +57,7 @@ const login = async (req, res) => {
   res.status(200).send({
     message: "success",
     token: token,
+    user
   });
 };
 

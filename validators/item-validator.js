@@ -9,4 +9,4 @@ function validateItem(item) {
   return schema.validate(item);
 }
 
-module.exports = validateItem;
+// module.exports = validateItem;

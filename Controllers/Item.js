@@ -26,20 +26,17 @@ const createItem = async (req, res) => {
     //     req.body.authorId
     //   );
     // }
-    const { title, desc, authorId } = req.body;
+    const { title, desc, authorId, } = req.body;
     const item = new Item({
-      title,
-      desc,
-      authorId,
+     ...req.body
     });
     await item.save();
-    res.status(201).send(
+    res.status(201).json(
       {
         message: "New item created",
+          item
       },
-      item.title,
-      item.desc,
-      // nameAuthor
+
     );
   } catch (error) {
     res.status(500).send({
@@ -84,8 +81,62 @@ const getAllItems = async (req, res) => {
   }
   
 };
+//Method DELETE
+
+const deleteItem= async (req,res)=>{
+  try{
+      await Item.findByIdAndRemove(req.params.id)
+      res.status(200).send({
+          success:true,
+          message:'deleted'
+      })
+  }catch (err){
+    res.status(500).send({
+      message: "Sorry for technical problems",
+    });
+    console.error(err);
+  }
+}
+
+//Method GET
+const getItems = async (req,res)=>{
+  try{
+       const  items = await Item.find().lean()
+      res.status(200).send({
+          success:true,
+          items
+      })
+  }catch (error){
+    res.status(500).send({
+      message: "Sorry for technical problems",
+    });
+    console.error(error);
+  }
+}
+
+
+//Method PUT
+const updateItem = async (req,res)=>{
+  try{
+      await Item.findByIdAndUpdate(req.params.id,{...req.body})
+      const updated = await Item.findById(req.params.id)
+      res.status(201).send({
+          success:true,
+          updated
+      })
+  }catch (error){
+    res.status(500).send({
+      message: "Sorry for technical problems",
+    });
+    console.error(error);
+  }
+}
 
 module.exports = {
   createItem,
-  getAllItems
+  getAllItems,
+  updateItem,
+  getItems,
+  deleteItem
+
 };
